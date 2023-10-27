@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import CountDown from '../components/CountDown.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <CountDown />
+    <RouterLink to="/quiz">Direkt weiter zum Quiz</RouterLink>
   </main>
 </template>
