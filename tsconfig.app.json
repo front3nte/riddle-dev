@@ -8,6 +8,7 @@
     "noEmit": true,
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
+    "allowJs": true,
     "paths": {
       "@/*": ["./src/*"]
     }
