@@ -5,6 +5,5 @@ import CountDown from '../components/CountDown.vue'
 <template>
   <main>
     <CountDown />
-    <RouterLink to="/quiz">Direkt weiter zum Quiz</RouterLink>
   </main>
 </template>

@@ -58,6 +58,16 @@
   font-weight: normal;
 }
 
+@font-face {
+  font-family: "Lost Emerald";
+  src: url("/Lost Emerald.otf");
+}
+
+@font-face {
+  font-family: "Dungeon";
+  src: url("/DUNGEON.TTF");
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);
@@ -66,8 +76,8 @@ body {
     color 0.5s,
     background-color 0.5s;
   line-height: 1.6;
-  font-family:
-    Inter,
+  font-family: 'Gentium Book Plus', "Times New Roman", 'Times New Roman', Times, serif;
+    /*font-family: Inter,
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -78,9 +88,13 @@ body {
     'Fira Sans',
     'Droid Sans',
     'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
+    sans-serif; */
+  font-size: 22px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Dungeon', 'Lost Emerald', "Gentium Book Plus", 'Times New Roman', Times, serif;
 }
