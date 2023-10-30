@@ -75,10 +75,16 @@ input {
   color: white;
   background: hsla(0.5turn, 0%, 50%, 0.8);
   font-family: 'Gentium Book Plus', 'Times New Roman', 'Times New Roman', Times, serif;
+  transition: all 200ms ease-in-out;
 
   &.error {
     outline: 2px red solid;
     animation: shake 100ms infinite;
+  }
+
+  &:focus {
+    outline-width: 4px;
+    outline-color: rgb(66, 169, 169);
   }
 }
 </style>
