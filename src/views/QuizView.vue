@@ -16,14 +16,14 @@ const questions = [
   },
   {
     q: 'Wann hat Antonio auf seiner Tastatur einen echten Bug 🐞 gefunden?',
-    a: '15.12.2012'
+    a: '15.12.2021'
   },
   {
     q: 'Wann hat Daniel davon berichtet, dass eine Theme-Erstellerin Hühner, Feuer und Lamas in die IDE zaubert?',
     a: '30.06.2021'
   },
   {
-    q: 'Was ist der zweite **Begriff** in der zweiten <h3> in den Notizen vom Frontend Circle vom `${Dritte Antwort}`?',
+    q: 'Was ist der zweite **Begriff** in der zweiten &lt;h3&gt; in den Notizen vom Frontend Circle vom `${Dritte Antwort}`?',
     a: 'Task Runner'
   },
   {
