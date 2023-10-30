@@ -62,7 +62,7 @@ const questions = [
 
 <template>
   <main>
-    <QuizApp :questions="questions" start-text="Gute Reise!" next-level="final-riddle" :wait="true">
+    <QuizApp :questions="questions" start-text="Gute Reise!" next-level="final-riddle" :wait="true" waiting-text="Bei Sonnenuntergang reiten wir los...">
       <h1>Super, ihr seid nicht zu stoppen!</h1>
       <p>
         Nachdem ihr nun das WIM durchwühlt und in alten Mattermost-Chats gekramt habt, legen wir nun

@@ -1,28 +1,39 @@
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue'
-const countDownDate = new Date('November 5, 2023 16:15:50').getTime()
+import { onMounted, reactive, defineEmits } from 'vue'
+const countDownDate = new Date('October 30, 2023 18:59:00').getTime()
 const now = new Date().getTime()
 const distance = countDownDate - now
+
+const emit = defineEmits(['exceeded']);
 
 const state = reactive({
   exceeded: false
 })
 
+document.body.style.setProperty('--duration', `${distance}ms`)
+
+function endWaiting() {
+  emit('exceeded');
+  state.exceeded = true
+}
+
 onMounted(() => {
   if (distance < 0) {
-    state.exceeded = true
+    endWaiting();
   }
 })
 </script>
 <template>
   <div class="container" :class="{ waiting: !state.exceeded }">
-    <div class="sun"></div>
+    <div
+      class="sun"
+      @animationend="endWaiting()"
+    ></div>
   </div>
 </template>
 <style lang="scss">
 body.fantasy-quiz {
-  --duration: 60s;
-  animation: dusk var(--duration) linear alternate infinite;
+  animation: dusk var(--duration) linear;
 
   .container.waiting {
     width: 100vw;
@@ -37,21 +48,17 @@ body.fantasy-quiz {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background-color: gold;
+      background-color: white;
       opacity: 0.8;
       box-shadow: 0 0 100px 20px gold;
       position: absolute;
       left: 0;
       top: 0;
-      animation: sun-float var(--duration) linear infinite;
+      transform: translate(0, 0);
+      animation: sun-float var(--duration) linear;
     }
 
     @keyframes sun-float {
-      0% {
-        transform: translate(0, 0);
-        background-color: white;
-      }
-
       60% {
         background-color: gold;
       }
@@ -60,7 +67,7 @@ body.fantasy-quiz {
         background-color: rgb(215, 40, 40);
       }
 
-      100% {
+      to {
         transform: translate(50vw, calc(120vh));
         background-color: rgb(123, 65, 65);
       }
@@ -81,15 +88,15 @@ body.fantasy-quiz {
       }
       60% {
         background-color: rgb(228, 111, 52);
-        color: white;
+        color: var(--color-text);
       }
       70% {
-        background-color: rgb(30, 36, 48);
-        color: white;
+        background-color: var(--color-background);
+        color: var(--color-text);
       }
       100% {
-        background-color: rgb(30, 36, 48);
-        color: white;
+        background-color: var(--color-background);
+        color: var(--color-text);
       }
     }
   }

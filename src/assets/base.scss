@@ -100,6 +100,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: 1000ms all ease;
 
   &.start {
     --base-font: 'Playpen Sans', 'Comic Sans MS', sans-serif;

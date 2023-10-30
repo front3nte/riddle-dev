@@ -17,20 +17,22 @@ const props = defineProps({
   questions: Array as PropType<Question[]>,
   startText: String,
   nextLevel: String,
-  wait: Boolean
+  wait: Boolean,
+  waitingText: String,
 })
 
 const state = reactive({
-  index: -1
+  index: -1,
+  isWaiting: props.wait,
 })
 </script>
 
 <template>
   <div v-if="state.index < 0">
     <slot />
-    <div v-if="wait">
-      <SunsetAnimation />
-      <p class="wait-text">Bei Sonnenuntergang reiten wir los...</p>
+    <div v-if="state.isWaiting">
+      <SunsetAnimation @exceeded="state.isWaiting = false" />
+      <p class="wait-text">{{ props.waitingText }}</p>
     </div>
     <button v-else class="riddle-start-button" @click="state.index++">{{ props.startText }}</button>
   </div>
@@ -64,7 +66,7 @@ const state = reactive({
   background: transparent;
   border: 2px solid var(--outline-color);
   border-radius: 4px;
-  color: white;
+  color: var(--color-text);
   min-width: 200px;
   float: right;
   transition: all 300ms ease-in-out;
@@ -81,6 +83,7 @@ const state = reactive({
 
   &:hover {
     background-color: var(--outline-color);
+    color: white;
   }
 
   &:active {
