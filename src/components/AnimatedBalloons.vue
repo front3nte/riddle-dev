@@ -17,8 +17,8 @@ import FloatingObject from "./FloatingObject.vue";
 <style scoped>
 .container {
   pointer-events: none;
-  width: calc(100vw - 50px);
-  height: calc(100vh - 50px);
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   position: absolute;
   bottom:0;

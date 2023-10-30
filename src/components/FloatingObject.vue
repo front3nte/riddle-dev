@@ -101,7 +101,7 @@ defineProps({
 .lazy {
   position: absolute;
   max-width: 300px;
-  animation: move_y 30s linear forwards, oscil1 6s infinite;
+  animation: move_y 30s linear forwards infinite, oscil1 6s infinite;
 
   &:first-of-type {
     max-width: 100px;
