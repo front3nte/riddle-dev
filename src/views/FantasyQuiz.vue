@@ -63,8 +63,9 @@ const questions = [
 <template>
   <main>
     <QuizApp :questions="questions" start-text="Gute Reise!" next-level="final-riddle">
+      <h1>Super, ihr seid nicht zu stoppen! </h1>
       <p>
-        Super, ihr seid nicht zu stoppen! Nachdem ihr nun das WIM durchwühlt und in alten
+        Nachdem ihr nun das WIM durchwühlt und in alten
         Mattermost-Chats gekramt habt, legen wir nun den Schleier der Fantasie über all die Technik
         und begeben uns ins Reich der Sagen, Rätsel und Mythen.
       </p>
