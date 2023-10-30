@@ -7,7 +7,7 @@ const store = useQuizStore()
 </script>
 
 <template>
-  <h1>hello quiz</h1>
+  <h1>Naechstes Raetsel</h1>
   <QuestionItem
     v-if="store.count == 0"
     question="Was ist die erste Ziffer von Jasmins Durchwahl?"

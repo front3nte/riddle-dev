@@ -16,7 +16,11 @@ let givenAnswer: String
 
 function submit() {
   if (props.answer === givenAnswer) {
-    store.increment()
+    formState.success = true
+    setTimeout(() => {
+      formState.success = false
+      store.increment()
+    }, 3000)
   } else {
     formState.hasError = true
     setTimeout(() => {
@@ -27,7 +31,8 @@ function submit() {
 </script>
 
 <template>
-  <form @submit.prevent="submit">
+  <p v-if="formState.success === true">Richtig! 🥳 Bewahrt die Antwort gut auf...</p>
+  <form v-else @submit.prevent="submit">
     <p>{{ props.question }}</p>
     <input
       placeholder="Deine Antwort"
@@ -41,7 +46,6 @@ function submit() {
 </template>
 
 <style lang="scss">
-
 @keyframes shake {
   from {
     transform: translateX(-2px);
@@ -60,7 +64,7 @@ input {
   margin-top: 10px;
   color: white;
   background: hsla(0.5turn, 0%, 50%, 0.8);
-  font-family: 'Gentium Book Plus', "Times New Roman", 'Times New Roman', Times, serif;
+  font-family: 'Gentium Book Plus', 'Times New Roman', 'Times New Roman', Times, serif;
 
   &.error {
     outline: 2px red solid;
