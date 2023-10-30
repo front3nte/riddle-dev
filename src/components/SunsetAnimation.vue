@@ -10,7 +10,7 @@ const state = reactive({
   exceeded: false
 })
 
-document.body.style.setProperty('--duration', `${distance}ms`)
+document.body.style.setProperty('--duration', `${60000}ms`)
 
 function endWaiting() {
   emit('exceeded')
