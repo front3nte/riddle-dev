@@ -1,76 +1,88 @@
-<script setup>
-import { ref } from 'vue'
-import QuizWelcome from './QuizWelcome.vue';
-import { useLevelStore } from '@/stores/quiz';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useLevelStore } from '@/stores/quiz'
+import router from '@/router';
 
-document.body.classList.add("start");
+document.body.classList.add('start')
 
-const levelStore = useLevelStore();
+const levelStore = useLevelStore()
 
-const exceeded = ref(false);
-// let exceeded = false;
+const daysElement = ref(null)
+const hoursElement = ref(null)
+const minutesElement = ref(null)
+const secondsElement = ref(null)
 
-// document.addEventListener('DOMContentLoaded', function () {
 // Set the date we're counting down to
 const countDownDate = new Date('October 30, 2023 10:44:00').getTime()
 
-// Update the countdown every 1 second
-const x = setInterval(function () {
-  const now = new Date().getTime()
-  const distance = countDownDate - now
+onMounted(() => {
+  // Update the countdown every 1 second
+  const x = setInterval(function () {
+    const now = new Date().getTime()
+    const distance = countDownDate - now
 
-  // Calculate days, hours, minutes, and seconds
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-  // Display the countdown
-  document.getElementById('days').innerText = formatTime(days)
-  document.getElementById('hours').innerText = formatTime(hours)
-  document.getElementById('minutes').innerText = formatTime(minutes)
-  document.getElementById('seconds').innerText = formatTime(seconds)
+    if (
+      !daysElement.value ||
+      !hoursElement.value ||
+      !minutesElement.value ||
+      !secondsElement.value
+    ) {
+      return
+    }
 
-  // If the countdown is over, display a message
-  if (distance < 0) {
-    exceeded.value = true;
-    levelStore.increment();
-    // document.body.classList.remove("countdown")
-    clearInterval(x)
-    document.getElementById('days').innerText = '00'
-    document.getElementById('hours').innerText = '00'
-    document.getElementById('minutes').innerText = '00'
-    document.getElementById('seconds').innerText = '00'
-  }
-}, 1000)
-// })
+    // Display the countdown
+    ;(daysElement.value as HTMLSpanElement).innerText = formatTime(days)
+    ;(hoursElement.value as HTMLSpanElement).innerText = formatTime(hours)
+    ;(minutesElement.value as HTMLSpanElement).innerText = formatTime(minutes)
+    ;(secondsElement.value as HTMLSpanElement).innerText = formatTime(seconds)
+
+    // If the countdown is over, display a message
+    if (distance < 0) {
+      // exceeded.value = true;
+      levelStore.increment()
+      router.push("/quiz");
+
+      clearInterval(x)
+      ;(daysElement.value as HTMLSpanElement).innerText = '00'
+      ;(hoursElement.value as HTMLSpanElement).innerText = '00'
+      ;(minutesElement.value as HTMLSpanElement).innerText = '00'
+      ;(secondsElement.value as HTMLSpanElement).innerText = '00'
+    }
+  }, 1000)
+  // })
+})
 
 // Add leading zero to numbers less than 10
-function formatTime(time) {
-  return time < 10 ? '0' + time : time
+function formatTime(time: number) {
+  return time < 10 ? '0' + time : String(time)
 }
 </script>
 <template>
-  <QuizWelcome v-if="exceeded"/>
-  <div v-else class="countdown-container">
+  <!-- <QuizWelcome v-if="exceeded"/> -->
+  <div class="countdown-container">
     <div class="countdown-item">
-      <span id="days">00</span>
+      <span ref="daysElement">00</span>
       <p>Tage</p>
     </div>
     <div class="countdown-item">
-      <span id="hours">00</span>
+      <span ref="hoursElement">00</span>
       <p>Stunden</p>
     </div>
     <div class="countdown-item">
-      <span id="minutes">00</span>
+      <span ref="minutesElement">00</span>
       <p>Minuten</p>
     </div>
     <div class="countdown-item">
-      <span id="seconds">00</span>
+      <span ref="secondsElement">00</span>
       <p>Sekunden</p>
     </div>
   </div>
-
 </template>
 
 <style lang="scss">
@@ -176,8 +188,13 @@ body.countdown {
 }
 
 body.start {
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Comic Sans MS", Calibri, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Comic Sans MS', Calibri, sans-serif;
   }
 }
 </style>

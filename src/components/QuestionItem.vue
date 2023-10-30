@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { useLevelStore, useQuizStore } from '../stores/quiz'
+import { useLevelStore } from '../stores/quiz'
+
+const emit = defineEmits(['next', 'reset'])
 
 const props = defineProps({
   question: String,
   answer: String,
   questionCount: Number,
-  index: Number
+  index: Number,
 })
 
-const quizStore = useQuizStore()
 const levelStore = useLevelStore()
 const formState = reactive({ hasError: false, success: false })
 
@@ -22,9 +23,9 @@ function submit() {
     formState.success = true
     setTimeout(() => {
       formState.success = false
-      quizStore.increment()
-      if (props.questionCount && quizStore.count >= props.questionCount) {
-        quizStore.reset()
+      emit("next");
+      if (props.questionCount && props.index && props.index >= props.questionCount) {
+        emit("reset");
         levelStore.increment()
       }
     }, 3000)

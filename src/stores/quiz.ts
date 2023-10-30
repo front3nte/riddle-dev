@@ -4,9 +4,9 @@ import { ref } from 'vue'
 export const useLevelStore = defineStore('level', () => {
   const levels = [
     'countdown',
-    'welcome',
+    // 'welcome',
     'basic-quiz',
-    'fantasy-welcome',
+    // 'fantasy-welcome',
     'fantasy-quiz',
     'final-riddle'
   ]
@@ -23,6 +23,9 @@ export const useLevelStore = defineStore('level', () => {
     level.value = newLevel;
     document.body.classList.remove(...levels);
     document.body.classList.add(level.value);
+
+    const index = levels.indexOf(level.value);
+    document.body.classList.toggle('start', index < levels.indexOf("fantasy-welcome"))
   }
 
   function reached(searchLevel: string) {
@@ -35,16 +38,16 @@ export const useLevelStore = defineStore('level', () => {
   return { increment, level, reached, set }
 })
 
-export const useQuizStore = defineStore('quizIndex', () => {
-  const count = ref(0)
+// export const useQuizStore = defineStore('quizIndex', () => {
+//   const count = ref(0)
 
-  function reset() {
-    count.value = 0;
-  }
+//   function reset() {
+//     count.value = 0;
+//   }
 
-  function increment() {
-    count.value++
-  }
+//   function increment() {
+//     count.value++
+//   }
 
-  return { count, increment, reset }
-})
+//   return { count, increment, reset }
+// })
