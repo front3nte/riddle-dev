@@ -1,6 +1,5 @@
 <script setup>
 import FloatingObject from "./FloatingObject.vue";
-// const store = useStore()
 
 </script>
 <template>
