@@ -4,6 +4,7 @@ import { useLevelStore } from '../stores/quiz'
 import type { PropType } from 'vue'
 import { reactive } from 'vue'
 import router from '../router'
+import SunsetAnimation from "./SunsetAnimation.vue";
 
 const levelStore = useLevelStore()
 
@@ -15,7 +16,8 @@ interface Question {
 const props = defineProps({
   questions: Array as PropType<Question[]>,
   startText: String,
-  nextLevel: String
+  nextLevel: String,
+  wait: Boolean
 })
 
 const state = reactive({
@@ -26,7 +28,11 @@ const state = reactive({
 <template>
   <div v-if="state.index < 0">
     <slot />
-    <button class="riddle-start-button" @click="state.index++">{{ props.startText }}</button>
+    <div v-if="wait">
+      <SunsetAnimation />
+      <p class="wait-text">Im Morgengrauen des nun folgenden Tages reiten wir los...</p>
+    </div>
+    <button v-else class="riddle-start-button" @click="state.index++">{{ props.startText }}</button>
   </div>
   <div v-else>
     <template v-for="(item, index) in props.questions" :key="`questionItem-${index}`">
@@ -81,5 +87,14 @@ const state = reactive({
     color: var(--outline-color);
     background-color: white;
   }
+}
+
+.wait-text {
+  text-align: center;
+  padding-top: 15px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 32px;
+  font-family: 'My Soul', var(--heading-font);
 }
 </style>
