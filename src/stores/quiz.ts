@@ -11,25 +11,33 @@ export const useLevelStore = defineStore('level', () => {
     'final-riddle'
   ]
 
-  const counter = ref(0)
+  const level = ref("countdown")
 
   function increment() {
-    counter.value++
+    const index = levels.indexOf(level.value);
+    level.value = levels[index+1]
   }
 
-  function getLevel() {
-    return levels[counter.value]
+  function reached(searchLevel) {
+    const index = levels.indexOf(level.value);
+    const searchIndex = levels.indexOf(searchLevel);
+    console.log(index, searchIndex);
+    return searchIndex < index;
   }
 
-  return { getLevel, increment }
+  return { increment, level, reached }
 })
 
 export const useQuizStore = defineStore('quizIndex', () => {
   const count = ref(0)
 
+  function reset() {
+    count.value = 0;
+  }
+
   function increment() {
     count.value++
   }
 
-  return { count, increment }
+  return { count, increment, reset }
 })

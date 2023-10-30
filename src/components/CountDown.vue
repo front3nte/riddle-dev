@@ -1,8 +1,12 @@
 <script setup>
+import { ref } from 'vue'
+import QuizWelcome from './QuizWelcome.vue';
+import { useLevelStore } from '@/stores/quiz';
+
 document.body.classList.add("start");
 document.body.classList.add("countdown");
-import QuizWelcome from './QuizWelcome.vue';
-import { ref } from 'vue'
+
+const levelStore = useLevelStore();
 
 const exceeded = ref(false);
 // let exceeded = false;
@@ -31,6 +35,7 @@ const x = setInterval(function () {
   // If the countdown is over, display a message
   if (distance < 0) {
     exceeded.value = true;
+    levelStore.increment();
     document.body.classList.remove("countdown")
     clearInterval(x)
     document.getElementById('days').innerText = '00'

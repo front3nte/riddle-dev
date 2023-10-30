@@ -1,5 +1,9 @@
 <script setup>
 import AnimatedBalloons from './AnimatedBalloons.vue'
+import { useLevelStore } from "../stores/quiz";
+
+const levelStore = useLevelStore();
+
 </script>
 <template>
   <h1>Herzlichen Glückwunsch!</h1>
@@ -14,7 +18,7 @@ import AnimatedBalloons from './AnimatedBalloons.vue'
     Doch bedenkt: die Weisheiten, die ihr auf dieser Reise sammeln werdet, werden noch von Belang
     sein, also bewahret sie sicher.
   </p>
-  <RouterLink to="/quiz">Los geht's!</RouterLink>
+  <RouterLink to="/quiz" @click="levelStore.increment()">Los geht's!</RouterLink>
 
   <AnimatedBalloons />
 </template>

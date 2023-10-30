@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { useQuizStore } from '../stores/quiz'
+import { useLevelStore, useQuizStore } from '../stores/quiz'
 
 const props = defineProps({
   question: String,
-  answer: String
+  answer: String,
+  questionCount: Number
 })
 
-const store = useQuizStore()
+const quizStore = useQuizStore()
+const levelStore = useLevelStore()
 const formState = reactive({ hasError: false, success: false })
 
 const input = ref(null)
@@ -19,7 +21,11 @@ function submit() {
     formState.success = true
     setTimeout(() => {
       formState.success = false
-      store.increment()
+      quizStore.increment()
+      if (props.questionCount && quizStore.count >= props.questionCount) {
+        quizStore.reset();
+        levelStore.increment();
+      }
     }, 3000)
   } else {
     formState.hasError = true
@@ -33,7 +39,7 @@ function submit() {
 <template>
   <p v-if="formState.success === true">Richtig! 🥳 Bewahrt die Antwort gut auf...</p>
   <form v-else @submit.prevent="submit">
-    <p>{{ props.question }}</p>
+    <p v-html="props.question"></p>
     <input
       placeholder="Deine Antwort"
       ref="input"
