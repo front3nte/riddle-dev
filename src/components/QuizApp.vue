@@ -198,6 +198,7 @@ const fantasyQuestions = [
       begonnen werden. Seid wachsam, denn eure Mission ist fast erfüllt. Es liegt nun an euch, die
       Antworten zu kombinieren und das Portal zu öffnen.
     </p>
+    <button class="riddle-start-button final" @click="levelStore.increment()">Tretet näher</button>
   </div>
 </template>
 
@@ -213,6 +214,14 @@ const fantasyQuestions = [
   float: right;
   transition: all 300ms ease-in-out;
   cursor: pointer;
+  display: flex;
+  margin: auto;
+  align-items: baseline;
+  justify-content: center;
+
+  &.final {
+    float: none;
+  }
 
   &:hover {
     background-color: darkslategrey;
