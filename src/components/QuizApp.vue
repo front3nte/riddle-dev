@@ -44,7 +44,7 @@ const firstQuestions = [
     a: 'P'
   },
   {
-    q: 'const a = `${Dritte Antwort}`; console.log(`${a.vorvorletztesZeichen}${a.vorletzteZeichen}`); // Was wird ausgegeben?',
+    q: 'const a = `${Dritte Antwort}`;<br> console.log(`${a.vorvorletztesZeichen}${a.vorletzteZeichen}`);<br><br> Was wird hier in der Konsole ausgegeben?',
     a: '02'
   },
   {

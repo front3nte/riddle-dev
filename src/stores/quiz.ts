@@ -18,11 +18,11 @@ export const useLevelStore = defineStore('level', () => {
     level.value = levels[index+1]
   }
 
-  function reached(searchLevel) {
+  function reached(searchLevel: string) {
     const index = levels.indexOf(level.value);
     const searchIndex = levels.indexOf(searchLevel);
     console.log(index, searchIndex);
-    return searchIndex < index;
+    return searchIndex <= index;
   }
 
   return { increment, level, reached }
