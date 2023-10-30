@@ -81,7 +81,7 @@ defineProps({
   25% {
     translate: 10px 0;
     transform: rotate(3deg);
-    animation-timing-function: cubic-bezier(0.7, 0.0, 0.9, 0.7);
+    animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
   }
   50% {
     translate: 0 0;
@@ -91,7 +91,7 @@ defineProps({
   75% {
     translate: -10px 0;
     transform: rotate(-3deg);
-    animation-timing-function: cubic-bezier(0.7, 0.0, 0.9, 0.7);
+    animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
   }
   to {
     translate: 0 0;
@@ -101,7 +101,9 @@ defineProps({
 .lazy {
   position: absolute;
   max-width: 300px;
-  animation: move_y 30s linear forwards infinite, oscil1 6s infinite;
+  animation:
+    move_y 30s linear forwards infinite,
+    oscil1 6s infinite;
 
   &:first-of-type {
     max-width: 100px;

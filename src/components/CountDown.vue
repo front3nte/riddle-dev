@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useLevelStore } from '@/stores/quiz'
-import router from '@/router';
+import router from '@/router'
 
 document.body.classList.add('start')
 
@@ -46,7 +46,7 @@ onMounted(() => {
     if (distance < 0) {
       // exceeded.value = true;
       levelStore.increment()
-      router.push("/quiz");
+      router.push('/quiz')
 
       clearInterval(x)
       ;(daysElement.value as HTMLSpanElement).innerText = '00'
@@ -186,5 +186,4 @@ body.countdown {
     font-size: unset;
   }
 }
-
 </style>

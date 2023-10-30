@@ -8,7 +8,7 @@ const props = defineProps({
   question: String,
   answer: String,
   questionCount: Number,
-  index: Number,
+  index: Number
 })
 
 const levelStore = useLevelStore()
@@ -23,9 +23,9 @@ function submit() {
     formState.success = true
     setTimeout(() => {
       formState.success = false
-      emit("next");
+      emit('next')
       if (props.questionCount && props.index && props.index >= props.questionCount) {
-        emit("reset");
+        emit('reset')
         levelStore.increment()
       }
     }, 3000)
@@ -43,7 +43,7 @@ function submit() {
     Richtig! {{ levelStore.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut auf...
   </p>
   <form v-else @submit.prevent="submit">
-    <h1>{{ props.index ? `Raetsel Nummer ${props.index + 1}` : "Naechstes Raetsel" }}</h1>
+    <h1>{{ props.index ? `Raetsel Nummer ${props.index + 1}` : 'Naechstes Raetsel' }}</h1>
     <p v-html="props.question"></p>
     <input
       placeholder="Deine Antwort"

@@ -63,11 +63,11 @@ const questions = [
 <template>
   <main>
     <QuizApp :questions="questions" start-text="Gute Reise!" next-level="final-riddle">
-      <h1>Super, ihr seid nicht zu stoppen! </h1>
+      <h1>Super, ihr seid nicht zu stoppen!</h1>
       <p>
-        Nachdem ihr nun das WIM durchwühlt und in alten
-        Mattermost-Chats gekramt habt, legen wir nun den Schleier der Fantasie über all die Technik
-        und begeben uns ins Reich der Sagen, Rätsel und Mythen.
+        Nachdem ihr nun das WIM durchwühlt und in alten Mattermost-Chats gekramt habt, legen wir nun
+        den Schleier der Fantasie über all die Technik und begeben uns ins Reich der Sagen, Rätsel
+        und Mythen.
       </p>
       <p>
         In einem Zeitalter, in dem die Welt noch von ungezähmten Magien durchzogen war, beginnt eure
