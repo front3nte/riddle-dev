@@ -13,7 +13,7 @@ const exceeded = ref(false);
 
 // document.addEventListener('DOMContentLoaded', function () {
 // Set the date we're counting down to
-const countDownDate = new Date('October 30, 2023 00:00:00').getTime()
+const countDownDate = new Date('October 30, 2023 10:44:00').getTime()
 
 // Update the countdown every 1 second
 const x = setInterval(function () {

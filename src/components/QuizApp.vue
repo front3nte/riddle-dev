@@ -63,7 +63,7 @@ const fantasyQuestions = [
     a: '%'
   },
   {
-    q: 'Nachdem ihr das Rätsel des Zauberspruchs gelöst habt, führt euer Weg  euch zu den mächtigen Gilden und Zünften, die ihre Namen als Banner in  die Welt hinaus trugen. Der Name eines jeden solchen Ordens begann mit einem Zeichen, einem Buchstaben,  der wie ein Talisman ihre Identität und ihren Stolz schützte. Erzähle  mir, oh wackerer Reisender, welches mystische Zeichen dem Namen des Ordens voransteht, unter dessen Banner ihr dienst?',
+    q: 'Nachdem ihr das Rätsel des Zauberspruchs gelöst habt, führt euer Weg  euch zu den mächtigen Gilden und Zünften, die ihre Namen als Banner in  die Welt hinaus trugen. Der Name eines jeden solchen Ordens begann mit einem Zeichen, einem Buchstaben, der wie ein Talisman ihre Identität und ihren Stolz schützte. Erzähle  mir, oh wackerer Reisender, welches mystische Zeichen dem Namen des Ordens voransteht, unter dessen Banner ihr dient?',
     a: ']'
   },
   {
