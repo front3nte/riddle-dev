@@ -56,7 +56,7 @@ const state = reactive({
   padding: 15px 20px;
   font-size: 22px;
   background: transparent;
-  border: 2px solid darkslategrey;
+  border: 2px solid var(--outline-color);
   border-radius: 4px;
   color: white;
   min-width: 200px;
@@ -67,17 +67,18 @@ const state = reactive({
   margin: auto;
   align-items: baseline;
   justify-content: center;
+  font-family: var(--base-font);
 
   &.final {
     float: none;
   }
 
   &:hover {
-    background-color: darkslategrey;
+    background-color: var(--outline-color);
   }
 
   &:active {
-    color: darkslategrey;
+    color: var(--outline-color);
     background-color: white;
   }
 }

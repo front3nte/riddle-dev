@@ -13,7 +13,7 @@ const minutesElement = ref(null)
 const secondsElement = ref(null)
 
 // Set the date we're counting down to
-const countDownDate = new Date('October 30, 2023 10:44:00').getTime()
+const countDownDate = new Date('October 30, 2023 16:15:50').getTime()
 
 onMounted(() => {
   // Update the countdown every 1 second
@@ -187,14 +187,4 @@ body.countdown {
   }
 }
 
-body.start {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Comic Sans MS', Calibri, sans-serif;
-  }
-}
 </style>

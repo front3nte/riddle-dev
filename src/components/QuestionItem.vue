@@ -70,22 +70,22 @@ input {
   padding: 15px;
   border-radius: 4px;
   border: none;
-  outline: 2px solid darkslategrey;
+  outline: 2px solid var(--outline-color);
   font-size: 22px;
   margin-top: 10px;
   color: white;
-  background: hsla(0.5turn, 0%, 50%, 0.8);
-  font-family: 'Gentium Book Plus', 'Times New Roman', 'Times New Roman', Times, serif;
+  background: var(--input-background-color);
+  font-family: var(--base-font);
   transition: all 200ms ease-in-out;
-
-  &.error {
-    outline: 2px red solid;
-    animation: shake 100ms infinite;
-  }
 
   &:focus {
     outline-width: 4px;
-    outline-color: rgb(66, 169, 169);
+    outline-color: var(--outline-focus-color);
+  }
+
+  &.error {
+    outline-color: red;
+    animation: shake 100ms infinite;
   }
 }
 </style>
