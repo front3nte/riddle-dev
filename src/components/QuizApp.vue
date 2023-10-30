@@ -143,13 +143,13 @@ const fantasyQuestions = [
       wundersame Welt ein, bereit, eure Mission zu erfüllen und das Schicksal des Landes zu
       verändern. Euer Abenteuer hat gerade erst begonnen.
     </p>
-    <button class="riddle-start-button" @click="levelStore.level = 'fantasy-quiz'">Gute Reise!</button>
+    <button class="riddle-start-button" @click="levelStore.increment()">Gute Reise!</button>
   </div>
   <div v-else-if="levelStore.level === 'basic-quiz'">
-    <h1>Naechstes Raetsel</h1>
     <template v-for="(item, index) in firstQuestions" :key="`questionItem-${index}`">
       <QuestionItem
         v-if="quizStore.count == index"
+        :index="index"
         :question="item.q"
         :answer="item.a"
         :questionCount="firstQuestions.length"
@@ -157,9 +157,11 @@ const fantasyQuestions = [
     </template>
   </div>
   <div v-else-if="levelStore.level === 'fantasy-quiz'">
+    
     <template v-for="(item, index) in fantasyQuestions" :key="`questionItem-${index}`">
       <QuestionItem
         v-if="quizStore.count == index"
+        :index="index"
         :question="item.q"
         :answer="item.a"
         :questionCount="fantasyQuestions.length"
@@ -204,7 +206,7 @@ const fantasyQuestions = [
   padding: 15px 20px;
   font-size: 22px;
   background: transparent;
-  border: 2px solid  darkslategrey;
+  border: 2px solid darkslategrey;
   border-radius: 4px;
   color: white;
   min-width: 200px;
