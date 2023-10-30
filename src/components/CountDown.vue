@@ -4,7 +4,6 @@ import QuizWelcome from './QuizWelcome.vue';
 import { useLevelStore } from '@/stores/quiz';
 
 document.body.classList.add("start");
-document.body.classList.add("countdown");
 
 const levelStore = useLevelStore();
 
@@ -36,7 +35,7 @@ const x = setInterval(function () {
   if (distance < 0) {
     exceeded.value = true;
     levelStore.increment();
-    document.body.classList.remove("countdown")
+    // document.body.classList.remove("countdown")
     clearInterval(x)
     document.getElementById('days').innerText = '00'
     document.getElementById('hours').innerText = '00'

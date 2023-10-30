@@ -12,10 +12,17 @@ export const useLevelStore = defineStore('level', () => {
   ]
 
   const level = ref("countdown")
+  set(level.value);
 
   function increment() {
     const index = levels.indexOf(level.value);
-    level.value = levels[index+1]
+    set(levels[index+1]);
+  }
+
+  function set (newLevel: string) {
+    level.value = newLevel;
+    document.body.classList.remove(...levels);
+    document.body.classList.add(level.value);
   }
 
   function reached(searchLevel: string) {
@@ -25,7 +32,7 @@ export const useLevelStore = defineStore('level', () => {
     return searchIndex <= index;
   }
 
-  return { increment, level, reached }
+  return { increment, level, reached, set }
 })
 
 export const useQuizStore = defineStore('quizIndex', () => {
