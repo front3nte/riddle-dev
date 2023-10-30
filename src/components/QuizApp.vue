@@ -143,6 +143,7 @@ const fantasyQuestions = [
       wundersame Welt ein, bereit, eure Mission zu erfüllen und das Schicksal des Landes zu
       verändern. Euer Abenteuer hat gerade erst begonnen.
     </p>
+    <button class="riddle-start-button" @click="levelStore.level = 'fantasy-quiz'">Gute Reise!</button>
   </div>
   <div v-else-if="levelStore.level === 'basic-quiz'">
     <h1>Naechstes Raetsel</h1>
@@ -195,6 +196,29 @@ const fantasyQuestions = [
       begonnen werden. Seid wachsam, denn eure Mission ist fast erfüllt. Es liegt nun an euch, die
       Antworten zu kombinieren und das Portal zu öffnen.
     </p>
-    <button>Gute Reise!</button>
   </div>
 </template>
+
+<style lang="scss">
+.riddle-start-button {
+  padding: 15px 20px;
+  font-size: 22px;
+  background: transparent;
+  border: 2px solid  darkslategrey;
+  border-radius: 4px;
+  color: white;
+  min-width: 200px;
+  float: right;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkslategrey;
+  }
+
+  &:active {
+    color: darkslategrey;
+    background-color: white;
+  }
+}
+</style>
