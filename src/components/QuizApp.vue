@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import QuestionItem from './QuestionItem.vue';
+document.body.classList.remove("start");
 </script>
 
 <template>

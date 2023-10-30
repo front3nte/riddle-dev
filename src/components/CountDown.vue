@@ -1,5 +1,6 @@
 <script setup>
-document.body.className = 'start'
+document.body.classList.add("start");
+document.body.classList.add("countdown");
 import QuizWelcome from './QuizWelcome.vue';
 import { ref } from 'vue'
 
@@ -8,7 +9,7 @@ const exceeded = ref(false);
 
 // document.addEventListener('DOMContentLoaded', function () {
 // Set the date we're counting down to
-const countDownDate = new Date('October 29, 2023 16:23:00').getTime()
+const countDownDate = new Date('October 30, 2023 00:00:00').getTime()
 
 // Update the countdown every 1 second
 const x = setInterval(function () {
@@ -30,7 +31,7 @@ const x = setInterval(function () {
   // If the countdown is over, display a message
   if (distance < 0) {
     exceeded.value = true;
-    document.body.classList.remove("start")
+    document.body.classList.remove("countdown")
     clearInterval(x)
     document.getElementById('days').innerText = '00'
     document.getElementById('hours').innerText = '00'
@@ -68,7 +69,7 @@ function formatTime(time) {
 
 </template>
 
-<style>
+<style lang="scss">
 @keyframes pulse {
   0% {
     background-color: #f0e6f6;
@@ -108,14 +109,19 @@ function formatTime(time) {
 }
 
 body.start {
-  font-family: 'Arial', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  animation: dim 1s infinite;
+  background-color: #d660a7;
+  color: white;
+}
+
+body.countdown {
+  font-family: 'Arial', sans-serif;
   font-size: 15px;
+  animation: dim 1s infinite;
 }
 
 .countdown-container {
@@ -155,13 +161,19 @@ body.start {
   }
 }
 
-body.start p {
+.countdown-item p {
   margin: 5px 0;
   color: #4d4dff;
   font-size: 12px;
 
   @media (min-width: 600px) {
     font-size: unset;
+  }
+}
+
+body.start {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Comic Sans MS", Calibri, sans-serif;
   }
 }
 </style>
