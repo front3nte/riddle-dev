@@ -30,7 +30,7 @@ const state = reactive({
     <slot />
     <div v-if="wait">
       <SunsetAnimation />
-      <p class="wait-text">Im Morgengrauen des nun folgenden Tages reiten wir los...</p>
+      <p class="wait-text">Bei Sonnenuntergang reiten wir los...</p>
     </div>
     <button v-else class="riddle-start-button" @click="state.index++">{{ props.startText }}</button>
   </div>

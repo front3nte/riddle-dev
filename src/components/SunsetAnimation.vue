@@ -31,6 +31,7 @@ body.fantasy-quiz {
     position: absolute;
     top: 0;
     left: 0;
+    pointer-events: none;
 
     .sun {
       width: 100px;
@@ -42,7 +43,7 @@ body.fantasy-quiz {
       position: absolute;
       left: 0;
       top: 0;
-      animation: sun-float calc(var(--duration) * 2) linear infinite;
+      animation: sun-float var(--duration) linear infinite;
     }
 
     @keyframes sun-float {
@@ -51,29 +52,17 @@ body.fantasy-quiz {
         background-color: white;
       }
 
-      30% {
-        background-color: gold;
-      }
-
-      40% {
-        background-color: rgb(215, 40, 40);
-      }
-
-      50% {
-        transform: translate(50vw, calc(120vh));
-        background-color: rgb(123, 65, 65);
-      }
-
       60% {
-        background-color: rgb(215, 40, 40);
-      }
-      70% {
         background-color: gold;
+      }
+
+      80% {
+        background-color: rgb(215, 40, 40);
       }
 
       100% {
-        transform: translate(100vw, 0);
-        background-color: white;
+        transform: translate(50vw, calc(120vh));
+        background-color: rgb(123, 65, 65);
       }
     }
 
