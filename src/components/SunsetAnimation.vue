@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, reactive, defineEmits } from 'vue'
-const countDownDate = new Date('October 30, 2023 18:59:00').getTime()
+const countDownDate = new Date('November 02, 2023 09:00:00').getTime()
 const now = new Date().getTime()
 const distance = countDownDate - now
 
-const emit = defineEmits(['exceeded']);
+const emit = defineEmits(['exceeded'])
 
 const state = reactive({
   exceeded: false
@@ -13,22 +13,19 @@ const state = reactive({
 document.body.style.setProperty('--duration', `${distance}ms`)
 
 function endWaiting() {
-  emit('exceeded');
+  emit('exceeded')
   state.exceeded = true
 }
 
 onMounted(() => {
   if (distance < 0) {
-    endWaiting();
+    endWaiting()
   }
 })
 </script>
 <template>
   <div class="container" :class="{ waiting: !state.exceeded }">
-    <div
-      class="sun"
-      @animationend="endWaiting()"
-    ></div>
+    <div class="sun" @animationend="endWaiting()"></div>
   </div>
 </template>
 <style lang="scss">

@@ -4,7 +4,7 @@ import { useLevelStore } from '../stores/quiz'
 import type { PropType } from 'vue'
 import { reactive } from 'vue'
 import router from '../router'
-import SunsetAnimation from "./SunsetAnimation.vue";
+import SunsetAnimation from './SunsetAnimation.vue'
 
 const levelStore = useLevelStore()
 
@@ -18,12 +18,12 @@ const props = defineProps({
   startText: String,
   nextLevel: String,
   wait: Boolean,
-  waitingText: String,
+  waitingText: String
 })
 
 const state = reactive({
   index: -1,
-  isWaiting: props.wait,
+  isWaiting: props.wait
 })
 </script>
 

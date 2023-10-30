@@ -9,7 +9,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       beforeEnter: () => {
-        document.body.classList.add("start");
+        document.body.classList.add('start')
       }
     },
     {
@@ -20,8 +20,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/QuizView.vue'),
       beforeEnter: () => {
-        document.body.classList.add("start");
-      },
+        document.body.classList.add('start')
+      }
     },
     {
       path: '/fantasy-quiz',
@@ -31,8 +31,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/FantasyQuiz.vue'),
       beforeEnter: () => {
-        document.body.classList.remove("start");
-      },
+        document.body.classList.remove('start')
+      }
     },
     {
       path: '/final-riddle',
@@ -42,8 +42,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/FinalRiddle.vue'),
       beforeEnter: () => {
-        document.body.classList.remove("start");
-      },
+        document.body.classList.remove('start')
+      }
     }
   ]
 })

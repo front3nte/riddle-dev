@@ -100,11 +100,12 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: 1000ms all ease;
+  transition: background 1000ms ease;
 
   &.start {
     --base-font: 'Playpen Sans', 'Comic Sans MS', sans-serif;
     --heading-font: 'Comic Sans MS', Calibri, sans-serif;
+    --color-text: white;
     --link-highlight-color: hsla(196, 80%, 58%, 0.681);
     --link-color: rgb(28, 149, 171);
     --outline-color: rgb(255, 153, 201);
