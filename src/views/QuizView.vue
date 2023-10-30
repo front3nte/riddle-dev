@@ -15,15 +15,15 @@ const questions = [
     a: '8'
   },
   {
-    q: 'Wann hat Antonio auf seiner Tastatur einen echten Bug 🐞 gefunden?',
-    a: '15.12.2012'
+    q: 'Wann hat Antonio auf seiner Tastatur einen echten Bug 🐞 gefunden (dd.mm.yyyy)?',
+    a: '15.12.2021'
   },
   {
-    q: 'Wann hat Daniel davon berichtet, dass eine Theme-Erstellerin Hühner, Feuer und Lamas in die IDE zaubert?',
+    q: 'Wann hat Daniel davon berichtet, dass eine Theme-Erstellerin Hühner, Feuer und Lamas in die IDE zaubert (dd.mm.yyyy)?',
     a: '30.06.2021'
   },
   {
-    q: 'Was ist der zweite **Begriff** in der zweiten <h3> in den Notizen vom Frontend Circle vom `${Dritte Antwort}`?',
+    q: 'Was ist der zweite **Begriff** in der zweiten &lt;h3&gt; in den Notizen vom Frontend Circle vom `${Dritte Antwort}`?',
     a: 'Task Runner'
   },
   {
@@ -31,7 +31,7 @@ const questions = [
     a: 'Nadine Pusch'
   },
   {
-    q: 'Wer hat einen Blog Post darüber geschrieben, dass ein bestimmter `${Fünfte Antwort}` bei Installation fehlschlägt?',
+    q: 'Wer hat einen Blog Post darüber geschrieben, dass ein bestimmter `${Vierte Antwort}` bei Installation fehlschlägt?',
     a: 'André Petrakow'
   },
   {
@@ -55,7 +55,7 @@ const questions = [
     a: 'd'
   },
   {
-    q: 'Zweiter Buchstabe zweites Wort von `${Fünfte Antwort}`',
+    q: 'Zweiter Buchstabe des zweiten Wortes von `${Fünfte Antwort}`',
     a: 'u'
   }
 ]
