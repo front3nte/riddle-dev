@@ -25,6 +25,14 @@ const state = reactive({
   index: -1,
   isWaiting: props.wait
 })
+
+function nextQuestion() {
+  state.index++
+  if (props.questions && state.index >= props.questions?.length && props.nextLevel) {
+    router.push(props.nextLevel)
+    levelStore.increment()
+  }
+}
 </script>
 
 <template>
@@ -45,15 +53,7 @@ const state = reactive({
         :answer="item.a"
         :questionCount="props.questions?.length"
         @reset="state.index = -1"
-        @next="
-          () => {
-            state.index++
-            if (props.questions && state.index >= props.questions?.length && props.nextLevel) {
-              router.push(props.nextLevel)
-              levelStore.increment()
-            }
-          }
-        "
+        @next="nextQuestion()"
       />
     </template>
   </div>

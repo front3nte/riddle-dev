@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { onMounted, reactive, defineEmits } from 'vue'
-const countDownDate = new Date(import.meta.env.VITE_FANTASY_START).getTime()
+import { onMounted, reactive } from 'vue'
+const fantasyQuizStart = import.meta.env.VITE_FANTASY_START || "October 31, 2023 00:00:00";
+
+const countDownDate = new Date(fantasyQuizStart).getTime()
 const now = new Date().getTime()
 const distance = countDownDate - now
 
@@ -10,11 +12,13 @@ const state = reactive({
   exceeded: false
 })
 
-document.body.style.setProperty('--duration', `${60000}ms`)
+document.body.style.setProperty('--duration', `${distance}ms`)
 
 function endWaiting() {
-  emit('exceeded')
-  state.exceeded = true
+  if (distance < 0) {
+    emit('exceeded')
+    state.exceeded = true
+  }
 }
 
 onMounted(() => {

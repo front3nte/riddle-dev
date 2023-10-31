@@ -13,7 +13,8 @@ const minutesElement = ref(null)
 const secondsElement = ref(null)
 
 // Set the date we're counting down to
-const countDownDate = new Date(import.meta.env.VITE_QUIZ_START).getTime()
+const quizStart = import.meta.env.VITE_QUIZ_START || "October 31, 2023 00:00:00";
+const countDownDate = new Date(quizStart).getTime()
 
 onMounted(() => {
   // Update the countdown every 1 second

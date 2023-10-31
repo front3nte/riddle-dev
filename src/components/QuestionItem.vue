@@ -19,16 +19,19 @@ const input = ref(null)
 let givenAnswer: String
 
 function submit() {
-  if (props.answer === givenAnswer) {
+  if (props.answer === givenAnswer || import.meta.env.VITE_SKIP_ALLOWED === 'true') {
     formState.success = true
-    setTimeout(() => {
-      formState.success = false
-      emit('next')
-      if (props.questionCount && props.index && props.index >= props.questionCount) {
-        emit('reset')
-        levelStore.increment()
-      }
-    }, 3000)
+    setTimeout(
+      () => {
+        formState.success = false
+        emit('next')
+        if (props.questionCount && props.index && props.index >= props.questionCount) {
+          emit('reset')
+          levelStore.increment()
+        }
+      },
+      import.meta.env.VITE_SKIP_ALLOWED === 'true' ? 500 : 3000
+    )
   } else {
     formState.hasError = true
     setTimeout(() => {
