@@ -9,10 +9,8 @@ export default ({ mode }) => {
   // Load app-level env vars to node-level env vars.
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
-  console.log("==============process.env.VITE_BASE_PATH", process.env.VITE_BASE_PATH, "|");
-
   return defineConfig({
-    base: process.env.VITE_BASE_PATH,
+    base: `/${process.env.VITE_BASE_PATH}`,
     plugins: [vue(), vueJsx()],
     resolve: {
       alias: {
