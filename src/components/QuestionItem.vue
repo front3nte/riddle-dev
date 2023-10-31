@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useLevelStore } from '../stores/quiz'
 
 const emit = defineEmits(['next'])
@@ -17,6 +17,10 @@ const formState = reactive({ hasError: false, success: false })
 const input = ref(null)
 
 let givenAnswer: String
+
+onMounted(() => {
+  input.value.focus();
+})
 
 function submit() {
   if (props.answer === givenAnswer || import.meta.env.VITE_SKIP_ALLOWED === 'true') {
