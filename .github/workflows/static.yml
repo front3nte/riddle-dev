@@ -24,9 +24,6 @@ concurrency:
 jobs:
   build-and-deploy:
     env:
-      VITE_FANTASY_START: ${{ vars.VITE_FANTASY_START }}
-      VITE_QUIZ_START: ${{ vars.VITE_QUIZ_START }}
-      VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
       NODE_ENV: ${{ vars.NODE_ENV }}
     environment:
       name: github-pages
