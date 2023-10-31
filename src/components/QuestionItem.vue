@@ -8,7 +8,7 @@ const props = defineProps({
   question: String,
   answer: String,
   questionCount: Number,
-  index: Number
+  quest: Number
 })
 
 const levelStore = useLevelStore()
@@ -49,7 +49,7 @@ function submit() {
       auf...
     </p>
     <form v-else @submit.prevent="submit">
-      <h1>{{ props.index !== undefined ? `Raetsel Nummer ${props.index + 1}` : 'Naechstes Raetsel' }}</h1>
+      <h1>{{ props.quest !== undefined ? `Raetsel Nummer ${props.quest}` : 'Naechstes Raetsel' }}</h1>
       <p v-html="props.question"></p>
       <input
         :placeholder="levelStore.level === 'fantasy-quiz' ? '' : 'Deine Antwort'"

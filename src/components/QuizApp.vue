@@ -74,7 +74,7 @@ function nextQuestion() {
     <template v-for="(item, index) in props.questions" :key="`questionItem-${index}`">
       <QuestionItem
         v-if="state.quest == index + 1"
-        :index="state.quest - 1"
+        :quest="state.quest"
         :question="item.q"
         :answer="item.a"
         :questionCount="props.questions?.length"
