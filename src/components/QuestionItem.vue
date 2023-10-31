@@ -52,7 +52,7 @@ function submit() {
       <h1>{{ props.index !== undefined ? `Raetsel Nummer ${props.index + 1}` : 'Naechstes Raetsel' }}</h1>
       <p v-html="props.question"></p>
       <input
-        placeholder="Deine Antwort"
+        :placeholder="levelStore.level === 'fantasy-quiz' ? '' : 'Deine Antwort'"
         ref="input"
         type="text"
         class="answer"
@@ -84,6 +84,7 @@ body.fantasy-quiz .parchment {
     outline: none;
     border-bottom: 2px var(--color-background);
     border-bottom-style: dotted;
+    color: var(--color-background);
   }
 }
 
