@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode development",
-    "build": "npm run build-only",
-    "buildDev": "npm run build-only-dev",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "buildDev": "run-p type-check \"build-only-dev {@}\" --",
     "preview": "vite preview",
     "previewDev": "vite preview --mode development",
     "build-only": "vite build",
