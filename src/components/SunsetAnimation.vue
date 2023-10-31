@@ -19,7 +19,7 @@ function endWaiting() {
 
 onMounted(() => {
   if (distance < 0) {
-    endWaiting()
+    document.body.style.setProperty('--duration', `${60000}ms`)
   }
 })
 </script>
