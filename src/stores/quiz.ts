@@ -4,9 +4,7 @@ import { ref } from 'vue'
 export const useLevelStore = defineStore('level', () => {
   const levels = [
     'countdown',
-    // 'welcome',
     'basic-quiz',
-    // 'fantasy-welcome',
     'fantasy-quiz',
     'final-riddle'
   ]
@@ -31,7 +29,6 @@ export const useLevelStore = defineStore('level', () => {
   function reached(searchLevel: string) {
     const index = levels.indexOf(level.value)
     const searchIndex = levels.indexOf(searchLevel)
-    console.log(index, searchIndex)
     return searchIndex <= index
   }
 
