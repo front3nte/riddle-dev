@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "build": "run-p type-check \"build-only {@}\" --",
+    "buildDev": "run-p type-check \"build-only-dev {@}\" --",
     "preview": "vite preview",
+    "previewDev": "vite preview --mode development",
     "build-only": "vite build",
+    "build-only-dev": "vite --mode development build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
