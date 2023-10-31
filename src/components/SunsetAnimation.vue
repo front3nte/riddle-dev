@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, reactive, defineEmits } from 'vue'
-const countDownDate = new Date('November 02, 2023 09:00:00').getTime()
+const countDownDate = new Date(import.meta.env.VITE_FANTASY_START).getTime()
 const now = new Date().getTime()
 const distance = countDownDate - now
 
