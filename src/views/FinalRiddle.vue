@@ -11,7 +11,7 @@ if (!levelStore.reached('final-riddle')) {
 
 <template>
   <main>
-    <QuizApp start-text="Tretet Näher!">
+    <QuizApp start-text="Tretet Näher!" level="final-riddle">
       <p>
         Mit dem Wissen und den Erkenntnissen, die ihr während eurer epischen Reise durch das Land
         gesammelt habt, steht ihr nun vor einem monumentalen, von magischem Leuchten durchzogenen

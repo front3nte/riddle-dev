@@ -2,7 +2,7 @@
 import { ref, reactive } from 'vue'
 import { useLevelStore } from '../stores/quiz'
 
-const emit = defineEmits(['next', 'reset'])
+const emit = defineEmits(['next'])
 
 const props = defineProps({
   question: String,
@@ -25,10 +25,6 @@ function submit() {
       () => {
         formState.success = false
         emit('next')
-        if (props.questionCount && props.index && props.index >= props.questionCount) {
-          emit('reset')
-          levelStore.increment()
-        }
       },
       import.meta.env.VITE_SKIP_ALLOWED === 'true' ? 500 : 3000
     )
@@ -49,7 +45,7 @@ function submit() {
       auf...
     </p>
     <form v-else @submit.prevent="submit">
-      <h1>{{ props.index ? `Raetsel Nummer ${props.index + 1}` : 'Naechstes Raetsel' }}</h1>
+      <h1>{{ props.index !== undefined ? `Raetsel Nummer ${props.index + 1}` : 'Naechstes Raetsel' }}</h1>
       <p v-html="props.question"></p>
       <input
         placeholder="Deine Antwort"

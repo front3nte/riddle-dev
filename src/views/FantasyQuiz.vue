@@ -65,7 +65,7 @@ const questions = [
     <QuizApp
       :questions="questions"
       start-text="Gute Reise!"
-      next-level="final-riddle"
+      level="fantasy-quiz"
       :wait="true"
       waiting-text="Bei Sonnenuntergang reiten wir los..."
     >

@@ -5,7 +5,7 @@ import { useLevelStore } from '../stores/quiz'
 import AnimatedBalloons from '../components/AnimatedBalloons.vue'
 
 const levelStore = useLevelStore()
-if (!levelStore.reached('basic-quiz')) {
+if (!levelStore.reached('quiz')) {
   router.push('/')
 }
 
@@ -63,7 +63,7 @@ const questions = [
 
 <template>
   <main>
-    <QuizApp :questions="questions" start-text="Los geht's!" next-level="fantasy-quiz">
+    <QuizApp :questions="questions" start-text="Los geht's!" level="quiz">
       <h1>Herzlichen Glückwunsch!</h1>
       <p>
         Wir hoffen ihr hattet mächtigen Puzzle-Spaß. Euer Ehrgeiz und eure Sorgfalt hat euch hier

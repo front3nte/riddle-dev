@@ -1,13 +1,9 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import router from '../router'
 
 export const useLevelStore = defineStore('level', () => {
-  const levels = [
-    'countdown',
-    'basic-quiz',
-    'fantasy-quiz',
-    'final-riddle'
-  ]
+  const levels = ['countdown', 'quiz', 'fantasy-quiz', 'final-riddle']
 
   const level = ref('countdown')
   set(level.value)
@@ -18,12 +14,21 @@ export const useLevelStore = defineStore('level', () => {
   }
 
   function set(newLevel: string) {
+    if (!levels.includes(newLevel)) {
+      return
+    }
+
     level.value = newLevel
     document.body.classList.remove(...levels)
     document.body.classList.add(level.value)
 
     const index = levels.indexOf(level.value)
-    document.body.classList.toggle('start', index < levels.indexOf('fantasy-welcome'))
+
+    if (index > 0) {
+      router.push({ name: newLevel })
+    }
+
+    document.body.classList.toggle('start', index <= levels.indexOf('quiz'))
   }
 
   function reached(searchLevel: string) {
@@ -34,17 +39,3 @@ export const useLevelStore = defineStore('level', () => {
 
   return { increment, level, reached, set }
 })
-
-// export const useQuizStore = defineStore('quizIndex', () => {
-//   const count = ref(0)
-
-//   function reset() {
-//     count.value = 0;
-//   }
-
-//   function increment() {
-//     count.value++
-//   }
-
-//   return { count, increment, reset }
-// })

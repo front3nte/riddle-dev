@@ -13,7 +13,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/quiz',
+      path: '/quiz/:quest?',
       name: 'quiz',
       // route level code-splitting
       // this generates a separate chunk (Quiz.[hash].js) for this route
@@ -24,7 +24,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/fantasy-quiz',
+      path: '/fantasy-quiz/:quest?',
       name: 'fantasy-quiz',
       // route level code-splitting
       // this generates a separate chunk (Quiz.[hash].js) for this route
@@ -35,7 +35,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/final-riddle',
+      path: '/final-riddle/:quest?',
       name: 'final-riddle',
       // route level code-splitting
       // this generates a separate chunk (Quiz.[hash].js) for this route
