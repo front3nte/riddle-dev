@@ -28,7 +28,9 @@ const state = reactive({
 })
 
 onMounted(() => {
-  levelStore.set(props.level)
+  if (levelStore.reached(props.level)) {
+    levelStore.set(props.level)
+  }
 })
 
 router.beforeResolve((guard) => {

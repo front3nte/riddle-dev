@@ -2,8 +2,6 @@
 import { ref, onMounted } from 'vue'
 import { useLevelStore } from '@/stores/quiz'
 
-document.body.classList.add('start')
-
 const levelStore = useLevelStore()
 
 const daysElement = ref(null)

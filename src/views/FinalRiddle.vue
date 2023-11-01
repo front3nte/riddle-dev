@@ -2,11 +2,18 @@
 import router from '@/router'
 import QuizApp from '../components/QuizApp.vue'
 import { useLevelStore } from '../stores/quiz'
+import { onMounted } from 'vue';
 
 const levelStore = useLevelStore()
-if (!levelStore.reached('final-riddle')) {
+if (!levelStore.reached('final-riddle') && !import.meta.env.VITE_SKIP_ALLOWED) {
   router.push('/fantasy-quiz')
 }
+
+onMounted(() => {
+  document.body.classList.remove(...levelStore.levels, "start");
+  document.body.classList.add("final-riddle")
+})
+
 </script>
 
 <template>

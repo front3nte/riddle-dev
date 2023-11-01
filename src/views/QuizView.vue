@@ -3,11 +3,17 @@ import router from '@/router'
 import QuizApp from '../components/QuizApp.vue'
 import { useLevelStore } from '../stores/quiz'
 import AnimatedBalloons from '../components/AnimatedBalloons.vue'
+import { onMounted } from 'vue'
 
 const levelStore = useLevelStore()
-if (!levelStore.reached('quiz')) {
+if (!levelStore.reached('quiz') && !import.meta.env.VITE_SKIP_ALLOWED) {
   router.push('/')
 }
+
+onMounted(() => {
+  document.body.classList.remove(...levelStore.levels)
+  document.body.classList.add("quiz", "start")
+})
 
 const questions = [
   {

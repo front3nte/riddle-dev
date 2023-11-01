@@ -19,16 +19,12 @@ export const useLevelStore = defineStore('level', () => {
     }
 
     level.value = newLevel
-    document.body.classList.remove(...levels)
-    document.body.classList.add(level.value)
 
     const index = levels.indexOf(level.value)
 
     if (index > 0) {
       router.push({ name: newLevel })
     }
-
-    document.body.classList.toggle('start', index <= levels.indexOf('quiz'))
   }
 
   function reached(searchLevel: string) {
@@ -37,5 +33,5 @@ export const useLevelStore = defineStore('level', () => {
     return searchIndex <= index
   }
 
-  return { increment, level, reached, set }
+  return { increment, level, reached, set, levels }
 })

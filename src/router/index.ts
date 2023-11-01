@@ -8,9 +8,6 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      beforeEnter: () => {
-        document.body.classList.add('start')
-      }
     },
     {
       path: '/quiz/:quest?',
@@ -19,9 +16,6 @@ const router = createRouter({
       // this generates a separate chunk (Quiz.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/QuizView.vue'),
-      beforeEnter: () => {
-        document.body.classList.add('start')
-      }
     },
     {
       path: '/fantasy-quiz/:quest?',
@@ -30,9 +24,6 @@ const router = createRouter({
       // this generates a separate chunk (Quiz.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/FantasyQuiz.vue'),
-      beforeEnter: () => {
-        document.body.classList.remove('start')
-      }
     },
     {
       path: '/final-riddle/:quest?',
@@ -41,9 +32,6 @@ const router = createRouter({
       // this generates a separate chunk (Quiz.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/FinalRiddle.vue'),
-      beforeEnter: () => {
-        document.body.classList.remove('start')
-      }
     }
   ]
 })
