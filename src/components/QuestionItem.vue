@@ -2,6 +2,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useLevelStore } from '../stores/quiz'
 import ParchmentText from './ParchmentText.vue'
+import CelebrationAnimation from './CelebrationAnimation.vue';
 
 const emit = defineEmits(['next'])
 
@@ -12,7 +13,7 @@ const props = defineProps({
   questionCount: Number,
   displayQuest: Number,
   reachedQuest: Number,
-  fantasy: Boolean,
+  fantasy: Boolean
 })
 
 const levelStore = useLevelStore()
@@ -34,12 +35,14 @@ onMounted(() => {
 function submit() {
   if (props.answer === givenAnswer || import.meta.env.VITE_SKIP_ALLOWED === 'true') {
     formState.success = true
+    document.body.classList.add('success')
     setTimeout(
       () => {
         formState.success = false
         emit('next')
+        document.body.classList.remove('success')
       },
-      import.meta.env.VITE_SKIP_ALLOWED === 'true' ? 500 : 3000
+      import.meta.env.VITE_SUCCESS_DURATION || 3000
     )
   } else {
     formState.hasError = true
@@ -52,9 +55,12 @@ function submit() {
 
 <template>
   <ParchmentText :fantasy="props.fantasy">
-    <p v-if="formState.success === true">
-      Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut auf...
-    </p>
+    <div v-if="formState.success === true">
+      <p>
+        Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut auf...
+      </p>
+      <CelebrationAnimation v-if="props.level === 'final-riddle'"/>
+    </div>
     <form v-else @submit.prevent="submit">
       <h1>
         {{

@@ -35,6 +35,16 @@ defineProps({
 
   &__inner {
     padding: 100px 220px;
+
+    .quiz-end & {
+      padding-top: 170px;
+      padding-bottom: 170px;
+    }
+
+    .success & {
+      padding-top: 200px;
+      padding-bottom: 200px;
+    }
   }
 }
 </style>
