@@ -24,7 +24,12 @@ const questions = [
 
 <template>
   <main>
-    <QuizApp :questions="questions" start-text="Tretet Näher!" level="final-riddle" heading="Willkommen am Portal von Wesoria">
+    <QuizApp
+      :questions="questions"
+      start-text="Tretet Näher!"
+      level="final-riddle"
+      heading="Willkommen am Portal von Wesoria"
+    >
       <p>
         Mit dem Wissen und den Erkenntnissen, die ihr während eurer epischen Reise durch das Land
         gesammelt habt, steht ihr nun vor einem monumentalen, von magischem Leuchten durchzogenen

@@ -2,7 +2,7 @@
 import router from '@/router'
 import QuizApp from '../components/QuizApp.vue'
 import { useLevelStore } from '../stores/quiz'
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 
 const levelStore = useLevelStore()
 if (!levelStore.reached('fantasy-quiz') && !import.meta.env.VITE_SKIP_ALLOWED) {
@@ -10,8 +10,8 @@ if (!levelStore.reached('fantasy-quiz') && !import.meta.env.VITE_SKIP_ALLOWED) {
 }
 
 onMounted(() => {
-  document.body.classList.remove(...levelStore.levels, "start");
-  document.body.classList.add("fantasy-quiz")
+  document.body.classList.remove(...levelStore.levels, 'start')
+  document.body.classList.add('fantasy-quiz')
 })
 
 const questions = [
