@@ -5,6 +5,7 @@ import { useLevelStore } from '../stores/quiz'
 const emit = defineEmits(['next'])
 
 const props = defineProps({
+  level: String,
   question: String,
   answer: String,
   questionCount: Number,
@@ -16,10 +17,13 @@ const formState = reactive({ hasError: false, success: false })
 
 const input = ref(null)
 
-let givenAnswer: String
+const reachedNextLevel = levelStore.levels.indexOf(levelStore.level) > levelStore.levels.indexOf(props.level)
+const reachedLevelAndQuest = levelStore.reached(props.level) && levelStore.quest > props.quest || reachedNextLevel
+
+let givenAnswer: String = reachedLevelAndQuest ? props.answer : ''
 
 onMounted(() => {
-  input.value.focus();
+  input.value.focus()
 })
 
 function submit() {
@@ -44,23 +48,25 @@ function submit() {
 <template>
   <div class="parchment">
     <div class="parchment__inner">
-    <p v-if="formState.success === true">
-      Richtig! {{ levelStore.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut
-      auf...
-    </p>
-    <form v-else @submit.prevent="submit">
-      <h1>{{ props.quest !== undefined ? `Raetsel Nummer ${props.quest}` : 'Naechstes Raetsel' }}</h1>
-      <p v-html="props.question"></p>
-      <input
-        :placeholder="levelStore.level === 'fantasy-quiz' ? '' : 'Deine Antwort'"
-        ref="input"
-        type="text"
-        class="answer"
-        v-model="givenAnswer"
-        :class="{ error: formState.hasError }"
-      />
-    </form>
-  </div>
+      <p v-if="formState.success === true">
+        Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut
+        auf...
+      </p>
+      <form v-else @submit.prevent="submit">
+        <h1>
+          {{ props.quest !== undefined ? `Raetsel Nummer ${props.quest}` : 'Naechstes Raetsel' }}
+        </h1>
+        <p v-html="props.question"></p>
+        <input
+          :placeholder="levelStore.level === 'fantasy-quiz' ? '' : 'Deine Antwort'"
+          ref="input"
+          type="text"
+          class="answer"
+          v-model="givenAnswer"
+          :class="{ error: formState.hasError }"
+        />
+      </form>
+    </div>
   </div>
 </template>
 

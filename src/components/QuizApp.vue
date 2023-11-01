@@ -22,15 +22,18 @@ const props = defineProps({
 })
 
 const state = reactive({
-  index: -1,
   quest: 0,
   isWaiting: props.wait
 })
 
 onMounted(() => {
   if (levelStore.reached(props.level)) {
-    levelStore.set(props.level)
+    return
   }
+
+  levelStore.set(props.level)
+
+  state.quest = levelStore.quest
 })
 
 router.beforeResolve((guard) => {
@@ -39,24 +42,31 @@ router.beforeResolve((guard) => {
     return
   }
 
-  if (guard.params.quest === "") {
-    state.quest = 0;
+  if (guard.params.quest === '') {
+    state.quest = 0
   }
 
-  const urlIndex = Number.parseInt(guard.params.quest as string)
+  const urlQuest = Number.parseInt(guard.params.quest as string)
 
-  if (urlIndex <= state.index) {
-    state.quest = urlIndex
+  if (urlQuest < levelStore.quest) {
+    state.quest = urlQuest
     return
   }
 })
 
 function nextQuestion() {
-  state.index++
+  if (state.quest === levelStore.quest) {
+    levelStore.nextQuest()
+  }
+
   state.quest++
-  router.push({ name: props.level, params: { quest: state.index + 1 } })
-  if (props.questions && state.index >= props.questions?.length) {
-    levelStore.increment()
+  router.push({ name: props.level, params: { quest: state.quest } })
+  if (props.questions && levelStore.quest > props.questions?.length) {
+    if (levelStore.level === props.level) {
+      levelStore.increment()
+    } else {
+      router.push({ name: levelStore.levels[levelStore.levels.indexOf(props.level) + 1] })
+    }
   }
 }
 </script>
@@ -75,6 +85,7 @@ function nextQuestion() {
   <div v-else>
     <template v-for="(item, index) in props.questions" :key="`questionItem-${index}`">
       <QuestionItem
+        :level="props.level"
         v-if="state.quest == index + 1"
         :quest="state.quest"
         :question="item.q"
