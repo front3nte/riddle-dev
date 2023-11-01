@@ -18,13 +18,14 @@ const props = defineProps({
   startText: String,
   level: String,
   wait: Boolean,
-  waitingText: String
+  waitingText: String,
+  fantasy: Boolean,
 })
 
 const state = reactive({
   reachedQuest: 0,
   displayQuest: 0,
-  isWaiting: props.wait
+  isWaiting: props.wait,
 })
 
 onMounted(() => {
@@ -107,6 +108,7 @@ function nextQuestion() {
         :questionCount="props.questions?.length"
         :reachedQuest="state.reachedQuest"
         @next="nextQuestion()"
+        :fantasy="props.fantasy"
       />
     </template>
   </div>
@@ -130,8 +132,9 @@ function nextQuestion() {
   justify-content: center;
   font-family: var(--base-font);
 
-  &.final {
+  .final-riddle & {
     float: none;
+    margin-top: 1rem;
   }
 
   &:hover {

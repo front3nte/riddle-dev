@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
 import { useLevelStore } from '../stores/quiz'
+import ParchmentText from './ParchmentText.vue'
 
 const emit = defineEmits(['next'])
 
@@ -10,7 +11,8 @@ const props = defineProps({
   answer: String,
   questionCount: Number,
   displayQuest: Number,
-  reachedQuest: Number
+  reachedQuest: Number,
+  fantasy: Boolean,
 })
 
 const levelStore = useLevelStore()
@@ -49,57 +51,32 @@ function submit() {
 </script>
 
 <template>
-  <div class="parchment">
-    <div class="parchment__inner">
-      <p v-if="formState.success === true">
-        Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut auf...
-      </p>
-      <form v-else @submit.prevent="submit">
-        <h1>
-          {{
-            props.displayQuest !== undefined
-              ? `Raetsel Nummer ${props.displayQuest}`
-              : 'Naechstes Raetsel'
-          }}
-        </h1>
-        <p v-html="props.question"></p>
-        <input
-          :placeholder="levelStore.level === 'fantasy-quiz' ? '' : 'Deine Antwort'"
-          ref="input"
-          type="text"
-          class="answer"
-          v-model="givenAnswer"
-          :class="{ error: formState.hasError }"
-        />
-      </form>
-    </div>
-  </div>
+  <ParchmentText :fantasy="props.fantasy">
+    <p v-if="formState.success === true">
+      Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut auf...
+    </p>
+    <form v-else @submit.prevent="submit">
+      <h1>
+        {{
+          props.displayQuest !== undefined
+            ? `Raetsel Nummer ${props.displayQuest}`
+            : 'Naechstes Raetsel'
+        }}
+      </h1>
+      <p v-html="props.question"></p>
+      <input
+        :placeholder="levelStore.level === 'fantasy-quiz' ? '' : 'Deine Antwort'"
+        ref="input"
+        type="text"
+        class="answer"
+        v-model="givenAnswer"
+        :class="{ error: formState.hasError }"
+      />
+    </form>
+  </ParchmentText>
 </template>
 
 <style lang="scss">
-body.fantasy-quiz .parchment {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url('/pergament.png') no-repeat;
-  background-size: 100% 100%;
-  max-width: 100%;
-  max-height: 100%;
-  color: var(--color-background);
-
-  &__inner {
-    padding: 100px 220px;
-  }
-
-  input {
-    background-color: transparent;
-    outline: none;
-    border-bottom: 2px var(--color-background);
-    border-bottom-style: dotted;
-    color: var(--color-background);
-  }
-}
-
 @keyframes shake {
   from {
     transform: translateX(-2px);

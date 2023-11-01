@@ -74,6 +74,7 @@ const questions = [
       level="fantasy-quiz"
       :wait="true"
       waiting-text="Bei Sonnenuntergang reiten wir los..."
+      :fantasy="true"
     >
       <h1>Super, ihr seid nicht zu stoppen!</h1>
       <p>

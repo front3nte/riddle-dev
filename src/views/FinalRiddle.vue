@@ -14,11 +14,18 @@ onMounted(() => {
   document.body.classList.add("final-riddle")
 })
 
+const questions = [
+  {
+    q: "Hier kommt ein JavaScript Code hin. <br /> <br />Was ist der Rückgabewert?",
+    a: import.meta.env.VITE_GEO_ANSWER,
+  }
+]
+
 </script>
 
 <template>
   <main>
-    <QuizApp start-text="Tretet Näher!" level="final-riddle">
+    <QuizApp :questions="questions" start-text="Tretet Näher!" level="final-riddle">
       <p>
         Mit dem Wissen und den Erkenntnissen, die ihr während eurer epischen Reise durch das Land
         gesammelt habt, steht ihr nun vor einem monumentalen, von magischem Leuchten durchzogenen
