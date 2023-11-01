@@ -104,6 +104,10 @@ input {
   font-family: var(--base-font);
   transition: all 200ms ease-in-out;
 
+  .final-riddle & {
+    width: 500px;
+  }
+
   &:focus {
     outline-width: 4px;
     outline-color: var(--outline-focus-color);

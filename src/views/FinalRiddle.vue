@@ -2,7 +2,7 @@
 import router from '@/router'
 import QuizApp from '../components/QuizApp.vue'
 import { useLevelStore } from '../stores/quiz'
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 
 const levelStore = useLevelStore()
 if (!levelStore.reached('final-riddle') && !import.meta.env.VITE_SKIP_ALLOWED) {
@@ -10,17 +10,16 @@ if (!levelStore.reached('final-riddle') && !import.meta.env.VITE_SKIP_ALLOWED) {
 }
 
 onMounted(() => {
-  document.body.classList.remove(...levelStore.levels, "start");
-  document.body.classList.add("final-riddle")
+  document.body.classList.remove(...levelStore.levels, 'start')
+  document.body.classList.add('final-riddle')
 })
 
 const questions = [
   {
-    q: "Hier kommt ein JavaScript Code hin. <br /> <br />Was ist der Rückgabewert?",
-    a: import.meta.env.VITE_GEO_ANSWER,
+    q: 'Hier kommt ein JavaScript Code hin. <br /> <br />Welche magische Sequenz offenbart euch das Portal, nachdem ihr alle gesammelten Schlüssel in die Vertiefungen eingesetzt habt?',
+    a: import.meta.env.VITE_GEO_ANSWER
   }
 ]
-
 </script>
 
 <template>
@@ -49,11 +48,11 @@ const questions = [
         Stück des Puzzles an seinen Platz gesetzt wird.
       </p>
       <p>
-        Sobald alles an seinem Platz ist, sollt ihr die uralten Worte sprechen: "Durch das Wissen
-        der Vergangenheit, öffne dich für unsere Mission!" Wenn ihr richtig liegt, wird sich das
-        Portal zum Turm des Palastes von Wesoria öffnen und der letzte Hinweis wird euch enthüllt.
-        Wenn nicht, muss das Rätsel von Neuem begonnen werden. Seid wachsam, denn eure Mission ist
-        fast erfüllt. Es liegt nun an euch, die Antworten zu kombinieren und das Portal zu öffnen.
+        Sobald alles an seinem Platz ist, sollt ihr die uralten Worte sprechen, die das Portal euch
+        Offenbart. Wenn ihr richtig liegt, wird sich das Portal zum Turm des Palastes von Wesoria
+        öffnen und der letzte Hinweis wird euch enthüllt. Wenn nicht, muss das Rätsel von Neuem
+        begonnen werden. Seid wachsam, denn eure Mission ist fast erfüllt. Es liegt nun an euch, die
+        Antworten zu kombinieren und das Portal zu öffnen.
       </p>
     </QuizApp>
   </main>
