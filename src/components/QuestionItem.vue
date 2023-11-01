@@ -9,7 +9,8 @@ const props = defineProps({
   question: String,
   answer: String,
   questionCount: Number,
-  quest: Number
+  displayQuest: Number,
+  reachedQuest: Number
 })
 
 const levelStore = useLevelStore()
@@ -17,8 +18,10 @@ const formState = reactive({ hasError: false, success: false })
 
 const input = ref(null)
 
-const reachedNextLevel = levelStore.levels.indexOf(levelStore.level) > levelStore.levels.indexOf(props.level)
-const reachedLevelAndQuest = levelStore.reached(props.level) && levelStore.quest > props.quest || reachedNextLevel
+const reachedNextLevel =
+  levelStore.levels.indexOf(levelStore.level) > levelStore.levels.indexOf(props.level)
+const reachedLevelAndQuest =
+  (levelStore.reached(props.level) && props.reachedQuest > props.displayQuest) || reachedNextLevel
 
 let givenAnswer: String = reachedLevelAndQuest ? props.answer : ''
 
@@ -49,12 +52,15 @@ function submit() {
   <div class="parchment">
     <div class="parchment__inner">
       <p v-if="formState.success === true">
-        Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut
-        auf...
+        Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut auf...
       </p>
       <form v-else @submit.prevent="submit">
         <h1>
-          {{ props.quest !== undefined ? `Raetsel Nummer ${props.quest}` : 'Naechstes Raetsel' }}
+          {{
+            props.displayQuest !== undefined
+              ? `Raetsel Nummer ${props.displayQuest}`
+              : 'Naechstes Raetsel'
+          }}
         </h1>
         <p v-html="props.question"></p>
         <input
@@ -75,7 +81,7 @@ body.fantasy-quiz .parchment {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('/public/pergament.png') no-repeat;
+  background: url('/pergament.png') no-repeat;
   background-size: 100% 100%;
   max-width: 100%;
   max-height: 100%;

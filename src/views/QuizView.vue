@@ -12,7 +12,7 @@ if (!levelStore.reached('quiz') && !import.meta.env.VITE_SKIP_ALLOWED) {
 
 onMounted(() => {
   document.body.classList.remove(...levelStore.levels)
-  document.body.classList.add("quiz", "start")
+  document.body.classList.add('quiz', 'start')
 })
 
 const questions = [

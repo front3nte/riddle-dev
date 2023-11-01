@@ -6,34 +6,15 @@ export const useLevelStore = defineStore('level', () => {
   const levels = ['countdown', 'quiz', 'fantasy-quiz', 'final-riddle']
 
   const storedLevel = localStorage.getItem('level')
-  const storedQuest = localStorage.getItem('quest')
-
   const level = ref(storedLevel || 'countdown')
-  const quest = ref(storedQuest ? Number.parseInt(storedQuest) : 0)
 
-  set(level.value)
-
-  function resetQuest() {
-    quest.value = 0
-    localStorage.setItem('quest', String(quest.value))
-  }
-
-  function nextQuest() {
-    quest.value++
-    localStorage.setItem('quest', String(quest.value))
-  }
-
-  function reachedQuest(givenQuest: number) {
-    return givenQuest >= quest.value
-  }
+  set(level.value, false)
 
   function increment() {
-    const index = levels.indexOf(level.value)
-    set(levels[index + 1])
-    resetQuest()
+    set(getNextLevel(level.value), true)
   }
 
-  function set(newLevel: string) {
+  function set(newLevel: string, gotTo: boolean) {
     if (!levels.includes(newLevel)) {
       return
     }
@@ -43,8 +24,16 @@ export const useLevelStore = defineStore('level', () => {
 
     const index = levels.indexOf(level.value)
 
-    if (index > 0) {
+    if (index > 0 && gotTo) {
+      console.log('nagiating to newLevel', newLevel)
       router.push({ name: newLevel })
+    }
+  }
+
+  function getNextLevel(currentLevel: string) {
+    const index = levels.indexOf(currentLevel)
+    if (index < levels.length) {
+      return levels[index + 1]
     }
   }
 
@@ -54,5 +43,12 @@ export const useLevelStore = defineStore('level', () => {
     return searchIndex <= index
   }
 
-  return { increment, level, reached, set, levels, quest, resetQuest, nextQuest, reachedQuest }
+  function restart() {
+    set(levels[0], true)
+    levels.forEach((l) => {
+      localStorage.removeItem(l)
+    })
+  }
+
+  return { increment, level, reached, set, levels, getNextLevel, restart }
 })
