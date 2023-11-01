@@ -2,16 +2,23 @@
 import router from '@/router'
 import QuizApp from '../components/QuizApp.vue'
 import { useLevelStore } from '../stores/quiz'
+import { onMounted } from 'vue';
 
 const levelStore = useLevelStore()
-if (!levelStore.reached('final-riddle')) {
+if (!levelStore.reached('final-riddle') && !import.meta.env.VITE_SKIP_ALLOWED) {
   router.push('/fantasy-quiz')
 }
+
+onMounted(() => {
+  document.body.classList.remove(...levelStore.levels, "start");
+  document.body.classList.add("final-riddle")
+})
+
 </script>
 
 <template>
   <main>
-    <QuizApp start-text="Tretet Näher!">
+    <QuizApp start-text="Tretet Näher!" level="final-riddle">
       <p>
         Mit dem Wissen und den Erkenntnissen, die ihr während eurer epischen Reise durch das Land
         gesammelt habt, steht ihr nun vor einem monumentalen, von magischem Leuchten durchzogenen
@@ -37,9 +44,9 @@ if (!levelStore.reached('final-riddle')) {
       <p>
         Sobald alles an seinem Platz ist, sollt ihr die uralten Worte sprechen: "Durch das Wissen
         der Vergangenheit, öffne dich für unsere Mission!" Wenn ihr richtig liegt, wird sich das
-        Portal öffnen und der letzte Hinweis wird euch enthüllt. Wenn nicht, muss das Rätsel von
-        Neuem begonnen werden. Seid wachsam, denn eure Mission ist fast erfüllt. Es liegt nun an
-        euch, die Antworten zu kombinieren und das Portal zu öffnen.
+        Portal zum Turm des Palastes von Wesoria öffnen und der letzte Hinweis wird euch enthüllt.
+        Wenn nicht, muss das Rätsel von Neuem begonnen werden. Seid wachsam, denn eure Mission ist
+        fast erfüllt. Es liegt nun an euch, die Antworten zu kombinieren und das Portal zu öffnen.
       </p>
     </QuizApp>
   </main>
