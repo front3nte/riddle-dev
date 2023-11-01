@@ -20,12 +20,13 @@ const props = defineProps({
   wait: Boolean,
   waitingText: String,
   fantasy: Boolean,
+  heading: String
 })
 
 const state = reactive({
   reachedQuest: 0,
   displayQuest: 0,
-  isWaiting: props.wait,
+  isWaiting: props.wait
 })
 
 onMounted(() => {
@@ -64,19 +65,19 @@ function nextQuestion() {
   const reachedLastQuestion = props.questions && state.displayQuest >= props.questions?.length
 
   if (reachedLastQuestion) {
-    console.info("reachedLastQuestion")
+    console.info('reachedLastQuestion')
     if (levelStore.level === props.level) {
-      console.info("increment level");
+      console.info('increment level')
       levelStore.increment()
     } else {
-      console.log("navigating to next level")
+      console.log('navigating to next level')
       router.push({ name: levelStore.getNextLevel(props.level) })
     }
     return
   }
 
   if (state.reachedQuest === state.displayQuest) {
-    console.info("increment quest")
+    console.info('increment quest')
     state.reachedQuest++
     localStorage.setItem(props.level, String(state.reachedQuest))
   }
@@ -109,6 +110,7 @@ function nextQuestion() {
         :reachedQuest="state.reachedQuest"
         @next="nextQuestion()"
         :fantasy="props.fantasy"
+        :heading="props.heading"
       />
     </template>
   </div>

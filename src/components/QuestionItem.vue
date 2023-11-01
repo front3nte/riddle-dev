@@ -2,7 +2,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useLevelStore } from '../stores/quiz'
 import ParchmentText from './ParchmentText.vue'
-import CelebrationAnimation from './CelebrationAnimation.vue';
+import CelebrationAnimation from './CelebrationAnimation.vue'
 
 const emit = defineEmits(['next'])
 
@@ -13,7 +13,8 @@ const props = defineProps({
   questionCount: Number,
   displayQuest: Number,
   reachedQuest: Number,
-  fantasy: Boolean
+  fantasy: Boolean,
+  heading: String
 })
 
 const levelStore = useLevelStore()
@@ -59,12 +60,14 @@ function submit() {
       <p>
         Richtig! {{ props.level === 'fantasy-quiz' ? '🧙‍♂️' : '🥳' }} Bewahrt die Antwort gut auf...
       </p>
-      <CelebrationAnimation v-if="props.level === 'final-riddle'"/>
+      <CelebrationAnimation v-if="props.level === 'final-riddle'" />
     </div>
     <form v-else @submit.prevent="submit">
       <h1>
         {{
-          props.displayQuest !== undefined
+          props.heading
+            ? props.heading
+            : props.displayQuest !== undefined
             ? `Raetsel Nummer ${props.displayQuest}`
             : 'Naechstes Raetsel'
         }}
