@@ -34,18 +34,18 @@ onMounted(() => {
   input.value.focus()
 })
 
+const successDuration =
+  props.level === 'final-riddle' ? 10000 : import.meta.env.VITE_SUCCESS_DURATION || 3000
+
 function submit() {
   if (props.answer === givenAnswer || import.meta.env.VITE_SKIP_ALLOWED === 'true') {
     formState.success = true
     document.body.classList.add('success')
-    setTimeout(
-      () => {
-        formState.success = false
-        emit('next')
-        document.body.classList.remove('success')
-      },
-      import.meta.env.VITE_SUCCESS_DURATION || 3000
-    )
+    setTimeout(() => {
+      formState.success = false
+      emit('next')
+      document.body.classList.remove('success')
+    }, successDuration)
   } else {
     formState.hasError = true
     setTimeout(() => {
@@ -75,7 +75,9 @@ function submit() {
       </h1>
       <p v-html="props.question"></p>
       <input
-        :placeholder="levelStore.level === 'fantasy-quiz' ? $props.emoji : `${$props.emoji} Deine Antwort`"
+        :placeholder="
+          levelStore.level === 'fantasy-quiz' ? $props.emoji : `${$props.emoji} Deine Antwort`
+        "
         ref="input"
         type="text"
         class="answer"
