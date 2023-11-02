@@ -11,6 +11,7 @@ const levelStore = useLevelStore()
 interface Question {
   q: string
   a: string
+  e?: string
 }
 
 const props = defineProps({
@@ -106,6 +107,7 @@ function nextQuestion() {
         :display-quest="state.displayQuest"
         :question="item.q"
         :answer="item.a"
+        :emoji="item.e"
         :questionCount="props.questions?.length"
         :reachedQuest="state.reachedQuest"
         @next="nextQuestion()"

@@ -10,6 +10,7 @@ const props = defineProps({
   level: String,
   question: String,
   answer: String,
+  emoji: String,
   questionCount: Number,
   displayQuest: Number,
   reachedQuest: Number,
@@ -68,13 +69,13 @@ function submit() {
           props.heading
             ? props.heading
             : props.displayQuest !== undefined
-            ? `Raetsel Nummer ${props.displayQuest}`
+            ? `${$props.emoji} Raetsel Nummer ${props.displayQuest}`
             : 'Naechstes Raetsel'
         }}
       </h1>
       <p v-html="props.question"></p>
       <input
-        :placeholder="levelStore.level === 'fantasy-quiz' ? '' : 'Deine Antwort'"
+        :placeholder="levelStore.level === 'fantasy-quiz' ? $props.emoji : `${$props.emoji} Deine Antwort`"
         ref="input"
         type="text"
         class="answer"

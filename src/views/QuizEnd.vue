@@ -20,10 +20,11 @@ const geoAnswer = import.meta.env.VITE_GEO_ANSWER
 <template>
   <main>
     <ParchmentText :fantasy="true">
-      <h1>Fast geschafft!</h1>
+      <h1>Ihr seid fast am Ziel!</h1>
       <p>
-        <strong>{{ geoAnswer }} ist richtig! 🎖🧙‍♀️</strong>
+        <strong>{{ geoAnswer }}</strong> ist richtig.
       </p>
+      <p>Doch was mag diese Verlautbarung bedeuten?</p>
       <p>
         Erklimmet nun die Anhöhen der Schmiede und spürt die gefallenen Ahnen des Waldes unter euren
         Füßen. Wo das Tageslicht sich sanft im Horizont bettet wird der Thymian euch den Weg zum

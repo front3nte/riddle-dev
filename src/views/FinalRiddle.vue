@@ -16,8 +16,40 @@ onMounted(() => {
 
 const questions = [
   {
-    q: 'Hier kommt ein JavaScript Code hin. <br /> <br />Welche magische Sequenz offenbart euch das Portal, nachdem ihr alle gesammelten Schlüssel in die Vertiefungen eingesetzt habt?',
-    a: import.meta.env.VITE_GEO_ANSWER
+    q: `<code>
+      <pre>
+    function öffnePortal({purpur, saphire, smaragte, goldunzen, rubine}) {
+      function verwandlung(drachenblut) {
+        return drachenblut.charCodeAt(0).toString()
+      }
+
+      function magie(feenstaub) {
+        return feenstaub.charCodeAt(0).toString(16)
+      }
+
+      const [a, d, A, l] = purpur.map(verwandlung);
+      const [n, G, f] = saphire.map(magie);
+      const [h, e, s] = smaragte;
+      const [k, L, g] = goldunzen.map(verwandlung);
+      const [o, I, ä] = rubine.map(magie);
+      return n + "." + [G,a,n,d,A,l,f].join('') + ", " + h + "." + [k,L,e,g,o,I,ä,s].join('');
+    }
+
+    var schlüssel = {
+      purpur: [🌿, 🔮, 🏰, 🗡️],
+      saphire: [🦄, 🧙🏼‍♂️, ✨],
+      smaragte: [⚔️, 🐉, 🐲],
+      goldunzen: [🏹, 🧚‍♀, 📜],
+      rubine: [📖, 🧝, 📚],
+    }
+
+    var magischeSequenz = öffnePortal(schlüssel);
+    </pre>
+    </code>
+
+    Welche magische Sequenz offenbart euch das Portal, nachdem ihr alle auf eurer Reise gesammelten Schlüssel in die passenden Vertiefungen eingesetzt habt?`,
+    a: import.meta.env.VITE_GEO_ANSWER,
+    e: '🌌'
   }
 ]
 </script>
@@ -62,3 +94,9 @@ const questions = [
     </QuizApp>
   </main>
 </template>
+
+<style>
+code {
+  font-size: 12px;
+}
+</style>
