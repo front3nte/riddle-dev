@@ -5,7 +5,7 @@ import { onMounted } from 'vue'
 import ParchmentText from '../components/ParchmentText.vue'
 
 const levelStore = useLevelStore()
-if (!levelStore.reached('end-quiz') && !import.meta.env.VITE_SKIP_ALLOWED) {
+if (!levelStore.reached('quiz-end') && !(import.meta.env.VITE_SKIP_ALLOWED === 'true')) {
   router.push('/final-riddle')
 }
 
