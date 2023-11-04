@@ -14,7 +14,9 @@ defineProps({
 
 <style lang="scss">
 .parchment-text {
+  
   &.fantasy {
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
