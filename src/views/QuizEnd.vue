@@ -25,10 +25,13 @@ const geoAnswer = import.meta.env.VITE_GEO_ANSWER
         <strong>{{ geoAnswer }}</strong> ist richtig.
       </p>
       <p>Doch was mag diese Verlautbarung bedeuten?</p>
+      <br />
       <p>
-        <em>Erklimmet nun die Anhöhen der Schmiede und spürt die gefallenen Ahnen des Waldes unter euren
-        Füßen. Wo das Tageslicht sich sanft im Horizont bettet, wird der Thymian euch den Weg zum
-        kalten Metalle weisen.</em>
+        <cite>
+          Erklimmet nun die Anhöhen der Schmiede und spürt die gefallenen Ahnen des Waldes unter
+          euren Füßen. Wo das Tageslicht sich sanft im Horizont bettet, wird der Thymian euch den
+          Weg zum kalten Metalle weisen.
+        </cite>
       </p>
     </ParchmentText>
   </main>
